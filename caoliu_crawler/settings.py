@@ -15,3 +15,16 @@ NEWSPIDER_MODULE = 'caoliu_crawler.spiders'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'caoliu_crawler (+http://www.yourdomain.com)'
+
+ITEM_PIPELINES = {'scrapy.contrib.pipeline.images.ImagesPipeline': 1}
+
+IMAGES_STORE = '/home/lei/caoliu_images'
+
+IMAGES_MIN_HEIGHT = 320
+IMAGES_MIN_WIDTH = 320
+
+DOWNLOADER_MIDDLEWARES = {
+	'scrapy.contrib.downloadermiddleware.useragent.UserAgentMiddleware' : None,
+	'caoliu_crawler.spiders.rotate_useragent.RotateUserAgentMiddleware' :400 
+}
+
