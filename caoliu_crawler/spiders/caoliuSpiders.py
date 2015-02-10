@@ -7,10 +7,18 @@ from scrapy.http import Request
 class CaoliuSpider(scrapy.Spider):
     domainName = r'http://pw.pwcl.pw/'
     name = "caoliu"
+    MAX_PAGE = 1
+    sub_path = r"thread0806.php?fid=15"
     allowed_domains = ["rm.enocr.com","cl.clxxoo.com","pw.pwcl.pw","dz.pwcl.pw","cl.zrmv.org",]
     start_urls = [
-        domainName+"thread0806.php?fid=15",
+        domainName+sub_path,
 	 ]
+	 
+    def __init__(self):
+		for page in range(2,self.MAX_PAGE):
+			nextPageURL = self.domainName+self.sub_path+"&search=&page="+str(page)
+			self.start_urls.append(nextPageURL)
+			#print "NEXT PAGE URL:",nextPageURL
 
     def parse(self, response):
 		for sel in response.xpath('//tr/td/h3/a'):
