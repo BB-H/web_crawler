@@ -16,7 +16,15 @@ NEWSPIDER_MODULE = 'caoliu_crawler.spiders'
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'caoliu_crawler (+http://www.yourdomain.com)'
 
-ITEM_PIPELINES = {'scrapy.contrib.pipeline.images.ImagesPipeline': 1}
+ITEM_PIPELINES = {
+	'scrapy.contrib.pipeline.images.ImagesPipeline': 1,
+	'caoliu_crawler.pipelines.MongoDBPipeline':300,
+}
+
+MONGODB_SERVER = "localhost"
+MONGODB_PORT = 27017
+MONGODB_DB = "db_caoliu"
+MONGODB_COLLECTION = "caoliu"
 
 IMAGES_STORE = '/home/lei/caoliu_images'
 
