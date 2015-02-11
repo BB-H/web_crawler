@@ -23,7 +23,7 @@ ITEM_PIPELINES = {
 
 MONGODB_SERVER = "localhost"
 MONGODB_PORT = 27017
-MONGODB_DB = "db_caoliu"
+MONGODB_DB = "website_spider"
 MONGODB_COLLECTION = "caoliu"
 
 IMAGES_STORE = '/home/lei/caoliu_images'
