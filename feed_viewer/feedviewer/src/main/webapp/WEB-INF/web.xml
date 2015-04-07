@@ -1,0 +1,43 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+	<display-name>#My Web#</display-name>
+
+	<!-- 
+		使用default servlet来处理静态文件。一定要定义在DispatcherServlet前面
+		Tomcat, Jetty, JBoss, and GlassFish 自带的默认Servlet的名字: "default"
+		Google App Engine 自带的 默认Servlet的名字 : "_ah_default"
+		Resin 自带的 默认Servlet的名字 : "resin-file"
+		WebLogic 自带的 默认Servlet的名字 : "FileServlet"
+		WebSphere  自带的 默认Servlet的名字 : "SimpleFileServlet" 
+	 
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.jpg</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.js</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.css</url-pattern>
+	</servlet-mapping>
+	-->	
+
+	<servlet>
+		<servlet-name>springmvcservlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath*:/spring-mvc.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>springmvcservlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+</web-app>
